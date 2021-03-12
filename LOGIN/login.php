@@ -1,7 +1,7 @@
 <?php
 
 include 'adminlogin.php';
-// Session::checkLogin();
+
 
 ?>
 <?php

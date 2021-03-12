@@ -3,6 +3,7 @@
 
 include ('session.php');
 // goi toi ham checkLogin ben file session.php
+Session::checkLogin();
 
 include_once ('database.php');
 ?>
@@ -39,9 +40,18 @@ class adminlogin
 
                 // neu dung
                 if($result != false){
+                    $value = $result->fetch_assoc();
+                    // goi ham set tu session.php
+                    // $value['goi dung ten csdl']
+                    // ben phai la ten do minh tao ra ben trai la ten cot csdl
+                    // setter
+                    Session::set('adminlogin',true);
+                    Session::set('adminId',$value['adminId']);
+                    Session::set('adminUser',$value['adminUser']);
+                    Session::set('adminName',$value['adminName']);
                     header('Location:../Javascript/index.php');
                 }else{
-                    $alert = " Ten va Pass sai";
+                    $alert = "MK va TK sai";
                     return $alert;
                 }
             }

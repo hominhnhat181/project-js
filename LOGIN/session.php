@@ -34,7 +34,8 @@ class Session{
  public static function checkSession(){
     self::init();
     if (self::get("adminlogin") == false) {
-     header("Location:../Login/login.php");
+     self::destroy();
+     header("Location:../LOGIN/login.php");
     }
  }
 //hàm check login
@@ -44,5 +45,9 @@ class Session{
      header("Location:../Javascript/index.php");
     }
  }
+ public static function destroy(){
+   session_destroy();
+   header("Location:../LOGIN/login.php");
+  }
 }
 ?>
